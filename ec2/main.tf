@@ -1,18 +1,18 @@
 # Get Availability Zones
-#resource "tls_private_key" "qrst" {
-#  algorithm = "RSA"
-#  rsa_bits  = 4096
-#}
+resource "tls_private_key" "sree" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
 #
 ## Generate a Private Key and encode it as PEM.
-##resource "aws_key_pair" "key_pair" {
-##  key_name   = "kumar"
-##  public_key = tls_private_key.sree.public_key_openssh
-##
-##  provisioner "local-exec" {
-##    command = "echo '${tls_private_key.sree.private_key_pem}' > ./kumar.pem"
-##  }
-##}
+resource "aws_key_pair" "key_pair" {
+  key_name   = "kumar"
+  public_key = tls_private_key.sree.public_key_openssh
+
+  provisioner "local-exec" {
+    command = "echo '${tls_private_key.sree.private_key_pem}' > ./kumar.pem"
+  }
+}
 #
 ##resource "tls_private_key" "example" {
 ##  algorithm = "RSA"
@@ -44,7 +44,7 @@
 resource "aws_instance" "node" {
   ami                    = "ami-0c2ab3b8efb09f272"
   instance_type          = "t2.micro"
-#  key_name               = aws_key_pair.key_pair.id
+  key_name               = aws_key_pair.key_pair.key_name
  # key_name      = "${aws_key_pair.generated_key.key_name}"
 
   vpc_security_group_ids = [var.public_sg]
