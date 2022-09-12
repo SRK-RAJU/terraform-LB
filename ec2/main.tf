@@ -1,5 +1,5 @@
 # Get Availability Zones
-resource "tls_private_key" "sree" {
+resource "tls_private_key" "qrst" {
   algorithm = "RSA"
   rsa_bits  = 4096
 }
@@ -18,12 +18,15 @@ resource "tls_private_key" "sree" {
 #  algorithm = "RSA"
 #  rsa_bits  = 4096
 #}
-variable "key_name" {}
-
+#variable "key_name" {}
+resource "local_file" "adftstad" {
+  content  = tls_private_key.qrst.private_key_pem
+  filename = "adftstad.pem"
+}
 resource "aws_key_pair" "generated_key" {
 #  key_name   = "var"
-  key_name   = "var.key_name"
-  public_key = "${tls_private_key.sree.public_key_openssh}"
+  key_name   = "adftstad"
+  public_key = "${tls_private_key.qrst.public_key_openssh}"
 }
 
 
