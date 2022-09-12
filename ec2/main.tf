@@ -59,6 +59,12 @@ resource "aws_instance" "node" {
   root_block_device {
     volume_size = 10
   }
+  connection {
+    type        = "ssh"
+    user        = ubuntu
+    private_key = tls_private_key.qrst.private_key_pem
+    host        = aws_instance.node.public_ip
+  }
 }
 
 # Create and assosiate an Elastic IP
