@@ -1,10 +1,10 @@
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-    }
-  }
-}
+#terraform {
+#  required_providers {
+#    aws = {
+#      source = "hashicorp/aws"
+#    }
+#  }
+#}
 
 #terraform {
 #  backend "s3" {
