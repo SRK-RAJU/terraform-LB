@@ -18,9 +18,11 @@ resource "tls_private_key" "sree" {
 #  algorithm = "RSA"
 #  rsa_bits  = 4096
 #}
+variable "key_name" {}
 
 resource "aws_key_pair" "generated_key" {
-  key_name   = "kumar"
+#  key_name   = "var"
+  key_name   = "var.key_name"
   public_key = "${tls_private_key.sree.public_key_openssh}"
 }
 
