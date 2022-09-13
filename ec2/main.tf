@@ -13,6 +13,8 @@ resource "aws_key_pair" "key_pair" {
     command = "echo '${tls_private_key.sree.private_key_pem}' > ./kumar.pem"
   }
 }
+
+
 #
 ##resource "tls_private_key" "example" {
 ##  algorithm = "RSA"
